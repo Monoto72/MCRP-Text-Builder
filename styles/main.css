@@ -21,7 +21,31 @@
     box-sizing: border-box;
 }
 
-#charCount {
-    grid-column: label;
-  align-self: center;
+
+
+#colorGenerator {
+    max-height: 40px;
+    border-style: solid;
 }
+
+#colorPicker[type="color"] {
+    -webkit-appearance: none;
+     width: 30px;
+     height: 30px;
+     border: 1;
+     border-style: solid;
+     border-width: 2px;
+     border-radius: 50%;
+     border-color: black;
+     padding: 0;
+     overflow: hidden;
+ }
+
+ #colorPicker[type="color"]::-webkit-color-swatch-wrapper {
+     padding: 0;
+ }
+ 
+ #colorPicker[type="color"]::-webkit-color-swatch {
+     border: none;
+ }
+
