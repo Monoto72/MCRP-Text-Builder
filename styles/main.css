@@ -1,0 +1,27 @@
+#mainContent {
+    display: flex;
+    justify-content: center;
+    border-style: solid;
+
+}
+
+#mainContent .textAreaTitle {
+    text-align: center;
+
+}
+
+#mainContent ul {
+    list-style: none;
+    flex-wrap: wrap;
+    display: flex;
+    box-sizing: border-box;
+}
+
+#mainContent li {
+    box-sizing: border-box;
+}
+
+#charCount {
+    grid-column: label;
+  align-self: center;
+}

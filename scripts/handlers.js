@@ -1,0 +1,1 @@
+document.getElementById("showcase").disabled = true;
