@@ -1,12 +1,16 @@
 const textArea = document.querySelector("#userInput");
+const showcase = document.querySelector("#showcase");
 const colorPicker = document.querySelector("#colorPicker")
 
 window.onload = () => {
     count(textArea)
+    textArea.innerHTML = localStorage.getItem("input")
+    preview(textArea)
 }
 
 textArea.addEventListener("input", ({ currentTarget: target }) => {
     count(target)
+    localStorage.setItem("input", textArea.value);
 })
 
 colorPicker.addEventListener("input", ({ currentTarget: target }) => {
@@ -33,28 +37,23 @@ function count(target) {
 }
 
 function preview(content) {
-    const showcase = document.querySelector("#showcase")
-    const regex = "\{[^()]+?\}";
+    const filter = new RegExp("\{[^()]+?\}", 'g');
 
-    const unformattedText = content.value.split(" ");
-    let position = 0;
+    const unformattedColors = [...content.value.matchAll(filter)]
+    const unformattedText = content.value.split(filter);
 
-    for (const element of unformattedText) {
-        if (element.match(regex)) {
-            unformattedText[position] = "<b> test </b>"
-        }
-        position++;
+    let formattedText = "";
+    let formattedColors = ["#ffffff"];
+    let count = 0;
+
+    while(match=filter.exec(unformattedColors)){
+        formattedColors.push(match[0].slice(1,-1));
     }
 
-
+    unformattedText.forEach((string) => {
+        formattedText += `<p class="inlineText" style="color:${formattedColors[count]}">${string} </p>`
+        count++;
+    })
     
-    return showcase.value = unformattedText.join(" ")
+    return showcase.innerHTML = formattedText;
 }
-
-
-/*
-    result = colorArray.length > 0 ?
-        result = colorArray.map(color => {
-            return content.value.replaceAll(color, "test")
-        }) : content.value;
-*/

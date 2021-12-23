@@ -7,7 +7,6 @@
 
 #mainContent .textAreaTitle {
     text-align: center;
-
 }
 
 #mainContent ul {
@@ -19,6 +18,19 @@
 
 #mainContent li {
     box-sizing: border-box;
+}
+
+#showcase {
+    height: 110px;
+    width: 400px;
+    text-align: center;
+
+    background-color: cornflowerblue;
+}
+
+.inlineText {
+    display: inline;
+    font-size: 18px;
 }
 
 
