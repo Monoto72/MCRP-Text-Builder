@@ -6,6 +6,7 @@ window.onload = () => {
     count(textArea)
     textArea.innerHTML = localStorage.getItem("input")
     preview(textArea)
+    count(textArea)
 }
 
 textArea.addEventListener("input", ({ currentTarget: target }) => {
@@ -47,7 +48,11 @@ function preview(content) {
     let count = 0;
 
     while(match=filter.exec(unformattedColors)){
-        formattedColors.push(match[0].slice(1,-1));
+        if (match[0].slice(1,-1).length == 6) {
+            formattedColors.push("#" + match[0].slice(1,-1));
+        } else {
+            formattedColors.push(match[0].slice(1,-1));
+        }
     }
 
     unformattedText.forEach((string) => {
