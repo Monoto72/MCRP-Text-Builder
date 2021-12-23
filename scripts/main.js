@@ -6,7 +6,7 @@ const showcase = document.querySelector("#showcase");
 const colorPicker = document.querySelector("#colorPicker");
 const colorResult = document.querySelector("#colorResult");
 
-count = (target) => {
+const count = (target) => {
     const maxChar = target.getAttribute("maxlength");
     const currentChar = target.value.length;
 
@@ -25,7 +25,7 @@ count = (target) => {
     return output()
 }
 
- preview = (content) => {
+const preview = (content) => {
     const filter = new RegExp("\{[^()]+?\}", 'g');
 
     const unformattedColors = [...content.value.matchAll(filter)]
@@ -51,7 +51,7 @@ count = (target) => {
     return showcase.innerHTML = formattedText;
 }
 
-textSave = async (id) => {
+const textSave = async (id) => {
 
     const original = document.getElementById(id).innerHTML;
     const idCSS = document.getElementById(id);
