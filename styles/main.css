@@ -1,31 +1,32 @@
+main {
+    background-color: blueviolet;
+}
+
 #mainContent {
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    border-style: solid;
-
-}
-
-#mainContent .textAreaTitle {
-    text-align: center;
-}
-
-#mainContent ul {
+    border-left: 5px solid;
+    border-right: 5px solid;
     list-style: none;
-    flex-wrap: wrap;
-    display: flex;
-    box-sizing: border-box;
+    max-height: 100%;
+
+    background-color: white;
 }
 
-#mainContent li {
-    box-sizing: border-box;
+textarea {
+    resize: none;
 }
 
 #showcase {
-    height: 110px;
-    width: 400px;
+    height: 75px;
+    width: 100%;
     text-align: center;
+    background-color: rgba(0, 0, 0, 0.644);
+    padding: 10px 5px 0 5px;
 
-    background-color: cornflowerblue;
+    border-top: 3px solid;
+    border-bottom: 3px solid;
 }
 
 .inlineText {
@@ -33,7 +34,28 @@
     font-size: 18px;
 }
 
+#userInput {
+    border-top: 3px solid;
+    border-bottom: 3px solid;
+}
 
+#userInput:focus, #userInput:hover {
+    outline: 0;
+
+    background-color: rgba(233, 233, 233, 0.979);
+}
+
+#copyInput {
+    border: none;
+    border-bottom: 3px solid;
+
+}
+
+#copyInput:hover {
+    outline: 0;
+
+    background-color: rgba(233, 233, 233, 0.979);
+}
 
 #colorGenerator {
     max-height: 40px;
@@ -42,22 +64,25 @@
 
 #colorPicker[type="color"] {
     -webkit-appearance: none;
-     width: 30px;
-     height: 30px;
-     border: 1;
-     border-style: solid;
-     border-width: 2px;
-     border-radius: 50%;
-     border-color: black;
-     padding: 0;
-     overflow: hidden;
- }
+    width: 30px;
+    height: 30px;
+    border: 1;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 50%;
+    border-color: black;
+    padding: 0;
+    overflow: hidden;
+}
 
- #colorPicker[type="color"]::-webkit-color-swatch-wrapper {
-     padding: 0;
- }
+#colorPicker[type="color"]::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
  
- #colorPicker[type="color"]::-webkit-color-swatch {
-     border: none;
- }
+#colorPicker[type="color"]::-webkit-color-swatch {
+    border: none;
+}
+
+.mainContent {
+}
 
