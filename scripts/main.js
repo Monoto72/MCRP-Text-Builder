@@ -1,3 +1,5 @@
+//const util = require("./utils");
+
 const textArea = document.querySelector("#userInput");
 const showcase = document.querySelector("#showcase");
 const colorPicker = document.querySelector("#colorPicker")
@@ -28,16 +30,13 @@ async function copyText() {
     document.getElementById("copyInput").innerHTML = "Copied...";
     document.getElementById("copyInput").disabled = true;
     idCSS.style.pointerEvents = "none";
+    idCSS.style.borderBottom = "3px solid black"
 
     wait(3000).then(() => {
         document.getElementById("copyInput").innerHTML = original;
         document.getElementById("copyInput").disabled = false;
         idCSS.style.pointerEvents = "auto";
     });
-
-    function wait(ms) {
-        return new Promise(resolve => setTimeout(resolve, ms));
-    }
 }
 
 function count(target) {
@@ -82,4 +81,8 @@ function preview(content) {
     })
     
     return showcase.innerHTML = formattedText;
+}
+
+function wait(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
 }
