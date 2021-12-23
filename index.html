@@ -8,29 +8,30 @@
 </head>
 <body>
     <main>
-        <div id="container">
-            <div class="row">
+        <div class="container-fluid">
+            <div class="row g-0">
                 <div class="col mainContent"></div>
-                <div class="col-6 ">
-                    <div id="mainContent">
-                            <h3 class="title d-flex justify-content-center">Advertisement </h3>
-                            <div id="showcase""></div><br>
-                            <h3 class="title d-flex justify-content-center">Raw Text</h3>
-                            <label for="userInput" class="d-flex justify-content-center" id="charCount">Character Count: 250</label>
-                            <textarea id="userInput" name="userInput" maxlength="250" rows=3 cols=50 style="resize: none;" placeholder="Enter text here..."></textarea>
-                            <button class="d-flex justify-content-center" id="copyInput">Copy Text!</button><br>
-                            <div id="container">
-                                <div class="row">
-                                    <div class="col"></div>
-                                    <div class="col-6 d-flex justify-content-center">
-                                        <input type="color" id="colorPicker" name="colorPicker" value=#ffffff><br>
-                                        <p id="colorResult">#ffffff</p>
-                                    </div>
-                                    <div class="col"></div>
+                <div class="col-6 min-vh-100">
+                    <div class="h-80" id="mainContent">
+                        <h1 class="title d-flex justify-content-center">Advertisement</h3>
+                        <div id="showcase"></div><br>
+                        <h3 class="title d-flex justify-content-center">Raw Text</h3>
+                        <label for="userInput" class="d-flex justify-content-center" id="charCount">Character Count: 250</label>
+                        <p><textarea id="userInput" name="userInput" maxlength="250" rows=3 cols=50 style="resize: none;" placeholder="Enter text here..."></textarea></p>
+                        <p><button class="d-flex justify-content-center" id="copyInput" onclick="textSave(this.id)">Copy Text!</button></p>
+                        <p><button class="d-flex justify-content-center" id="downloadInput" onclick="textSave(this.id)">Download Advertisement</button></p><br>
+                        <div id="container">
+                            <div class="row">
+                                <div class="col"></div>
+                                <div class="col-6 d-flex justify-content-center">
+                                    <input type="color" id="colorPicker" name="colorPicker" value=#ffffff><br>
+                                    <p id="colorResult">#ffffff</p>
                                 </div>
+                                <div class="col"></div>
                             </div>
                         </div>
                     </div>
+                </div>
                 <div class="col sideContent"></div>
             </div>
         </div>
