@@ -3,25 +3,36 @@
 <head>
     <title>MCRP TextBuilder</title>
     <link rel="stylesheet" href="styles/main.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
     <main>
-        <div id="mainContent">
-            <ul>
-                <li>
-                    <h3 class="textAreaTitle">Showcase</h3>
-                    <div id="showcase""></div>
-                </li>
-                <li>
-                    <h3 class="textAreaTitle">User Entry</h3>
-                    <textarea id="userInput" name="userInput" maxlength="250" rows=4 cols=50 placeholder="Enter text here..."></textarea><br>
-                    <label for="userInput" id="charCount">Character Count: 250</label><br>
-                    <div id="colorGenerator">
-                        <input type="color" id="colorPicker" name="colorPicker" value=#ffffff>
-                        <label for="colorPicker" id="colorResult">#ffffff</p>
+        <div id="container">
+            <div class="row">
+                <div class="col mainContent"></div>
+                <div class="col-6 ">
+                    <div id="mainContent">
+                            <h3 class="title d-flex justify-content-center">Showcase</h3>
+                            <div id="showcase""></div><br>
+                            <h3 class="title d-flex justify-content-center">User Entry</h3>
+                            <label for="userInput" class="d-flex justify-content-center" id="charCount">Character Count: 250</label>
+                            <textarea id="userInput" name="userInput" maxlength="250" rows=3 cols=50 style="resize: none;" placeholder="Enter text here..."></textarea>
+                            <button class="d-flex justify-content-center" id="copyInput">Copy Text!</button><br>
+                            <div id="container">
+                                <div class="row">
+                                    <div class="col"></div>
+                                    <div class="col-6 d-flex justify-content-center">
+                                        <input type="color" id="colorPicker" name="colorPicker" value=#ffffff><br>
+                                        <p id="colorResult">#ffffff</p>
+                                    </div>
+                                    <div class="col"></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </li>
-            </ul>
+                <div class="col sideContent"></div>
+            </div>
         </div>
     </main>
 
