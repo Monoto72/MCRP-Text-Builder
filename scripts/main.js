@@ -13,6 +13,7 @@ count = (target) => {
     const count = document.querySelector("#charCount")
 
     if (currentChar >= maxChar) {
+        preview(target)
         return count.innerHTML = `Character Count: None remaining`
     }
 
