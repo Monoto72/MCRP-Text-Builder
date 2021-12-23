@@ -1,45 +1,12 @@
 //const util = require("./utils");
+//import fs from 'https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js';
 
 const textArea = document.querySelector("#userInput");
 const showcase = document.querySelector("#showcase");
-const colorPicker = document.querySelector("#colorPicker")
+const colorPicker = document.querySelector("#colorPicker");
+const colorResult = document.querySelector("#colorResult");
 
-document.getElementById("copyInput").addEventListener("click", copyText);
-
-window.onload = () => {
-    textArea.innerHTML = localStorage.getItem("input")
-    preview(textArea)
-    count(textArea)
-}
-
-textArea.addEventListener("input", ({ currentTarget: target }) => {
-    count(target)
-    localStorage.setItem("input", textArea.value);
-})
-
-colorPicker.addEventListener("input", ({ currentTarget: target }) => {
-    document.querySelector("#colorResult").innerHTML = target.value
-})
-
-async function copyText() {
-    await navigator.clipboard.writeText(textArea.value);
-
-    const original = document.getElementById("copyInput").innerHTML;
-    const idCSS = document.getElementById("copyInput");
-
-    document.getElementById("copyInput").innerHTML = "Copied...";
-    document.getElementById("copyInput").disabled = true;
-    idCSS.style.pointerEvents = "none";
-    idCSS.style.borderBottom = "3px solid black"
-
-    wait(3000).then(() => {
-        document.getElementById("copyInput").innerHTML = original;
-        document.getElementById("copyInput").disabled = false;
-        idCSS.style.pointerEvents = "auto";
-    });
-}
-
-function count(target) {
+count = (target) => {
     const maxChar = target.getAttribute("maxlength");
     const currentChar = target.value.length;
 
@@ -57,7 +24,7 @@ function count(target) {
     return output()
 }
 
-function preview(content) {
+ preview = (content) => {
     const filter = new RegExp("\{[^()]+?\}", 'g');
 
     const unformattedColors = [...content.value.matchAll(filter)]
@@ -83,6 +50,66 @@ function preview(content) {
     return showcase.innerHTML = formattedText;
 }
 
-function wait(ms) {
+textSave = async (id) => {
+
+    const original = document.getElementById(id).innerHTML;
+    const idCSS = document.getElementById(id);
+
+    switch(id) {
+        case "copyInput":
+            await navigator.clipboard.writeText(textArea.value);
+            document.getElementById(id).innerHTML = "Copied...";
+            break;
+        case "downloadInput":
+            document.getElementById(id).innerHTML = "Coming soon...";
+            break;
+        default:
+    }
+
+    document.getElementById(id).disabled = true;
+    idCSS.style.pointerEvents = "none";
+    idCSS.style.borderBottom = "3px solid black"
+
+    wait(3000).then(() => {
+        document.getElementById(id).innerHTML = original;
+        document.getElementById(id).disabled = false;
+        idCSS.style.pointerEvents = "auto";
+    });
+}
+
+wait = (ms) => {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
+
+
+document.getElementById("copyInput").addEventListener("click", textSave);
+document.getElementById("downloadInput").addEventListener("click", textSave);
+
+window.onload = () => {
+    textArea.innerHTML = localStorage.getItem("input")
+    colorPicker.value = localStorage.getItem("color")
+    colorResult.innerHTML = localStorage.getItem("color")
+    preview(textArea)
+    count(textArea)
+}
+
+document.getElementById("colorResult").addEventListener("click", () => {
+    const color = `{${colorPicker.value.slice(1)}}`;
+
+    textArea.innerHTML = textArea.length <= 0 ? 
+        color :
+        textArea.innerHTML += color ;
+
+    count(textArea)
+    localStorage.setItem("input", textArea.value);
+});
+
+textArea.addEventListener("input", ({ currentTarget: target }) => {
+    count(target)
+    localStorage.setItem("input", textArea.value);
+})
+
+colorPicker.addEventListener("input", ({ currentTarget: target }) => {
+    colorResult.innerHTML = target.value
+    localStorage.setItem("color", target.value)
+})
