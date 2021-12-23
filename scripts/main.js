@@ -1,4 +1,4 @@
-//const util = require("./utils");
+import * as util from "./utils";
 //import fs from 'https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js';
 
 const textArea = document.querySelector("#userInput");
@@ -71,15 +71,11 @@ textSave = async (id) => {
     idCSS.style.pointerEvents = "none";
     idCSS.style.borderBottom = "3px solid black"
 
-    wait(3000).then(() => {
+    util.wait(3000).then(() => {
         document.getElementById(id).innerHTML = original;
         document.getElementById(id).disabled = false;
         idCSS.style.pointerEvents = "auto";
     });
-}
-
-wait = (ms) => {
-    return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 
