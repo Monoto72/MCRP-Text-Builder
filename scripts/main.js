@@ -41,7 +41,7 @@ const preview = (content) => {
     }
 
     unformattedText.forEach((string) => {
-        formattedText += `<p class="inlineText" style="color:${formattedColors[count]}">${string} </p>`
+        formattedText += `<span class="inlineText" style="color:${formattedColors[count]}">${string} </span>`
         count++;
     })
     
@@ -68,11 +68,31 @@ const textSave = async (id) => {
     idCSS.style.pointerEvents = "none";
     idCSS.style.borderBottom = "3px solid black"
 
-    util.wait(3000).then(() => {
+    wait(3000).then(() => {
         document.getElementById(id).innerHTML = original;
         document.getElementById(id).disabled = false;
         idCSS.style.pointerEvents = "auto";
     });
+}
+
+const bgSwitch = (id) => {
+    const idCSS = document.getElementById("showcase")
+
+    switch(id) {
+        case "bg-1":
+            idCSS.style.backgroundColor = "rgba(0, 0, 0, 0.644)"
+            // localStorage.setItem("background", idCSS.style.background);
+            break;
+        case "bg-2":
+            idCSS.style.backgroundColor = "rgba(106, 140, 255, 0.705)"
+            // localStorage.setItem("background", idCSS.style.background);
+            break;
+        case "bg-3":
+            idCSS.style.background = "rgba(255, 32, 32, 0.616)"
+            // localStorage.setItem("background", idCSS.style.background);
+            break;
+        default:
+    }    
 }
 
 const wait = (ms) => {
@@ -82,10 +102,16 @@ const wait = (ms) => {
 document.getElementById("copyInput").addEventListener("click", textSave);
 document.getElementById("downloadInput").addEventListener("click", textSave);
 
+document.getElementById("bg-1").addEventListener("click", bgSwitch);
+document.getElementById("bg-2").addEventListener("click", bgSwitch);
+document.getElementById("bg-3").addEventListener("click", bgSwitch);
+
 window.onload = () => {
     textArea.innerHTML = localStorage.getItem("input")
     colorPicker.value = localStorage.getItem("color")
     colorResult.innerHTML = localStorage.getItem("color")
+    // document.getElementById("showcase").style.backgroundColor = localStorage.getItem("background");
+
     preview(textArea)
     count(textArea)
 }

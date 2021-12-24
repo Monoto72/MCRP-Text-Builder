@@ -14,8 +14,21 @@
                 <div class="col-6 min-vh-100">
                     <div class="h-80" id="mainContent">
                         <h1 class="title d-flex justify-content-center">Advertisement</h3>
-                        <div id="showcase"></div><br>
-                        <h3 class="title d-flex justify-content-center">Raw Text</h3>
+                        <div id="showcase"></div>
+                        <div id="container">
+                            <div class="row">
+                                <div class="col d-flex justify-content-center">
+                                    <span id="bg-1" onclick="bgSwitch(this.id)"></span>
+                                </div>
+                                <div class="col d-flex justify-content-center">
+                                    <span id="bg-2" onclick="bgSwitch(this.id)"></span>
+                                </div>
+                                <div class="col d-flex justify-content-center">
+                                    <span id="bg-3" onclick="bgSwitch(this.id)"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <br><h3 class="title d-flex justify-content-center">Raw Text</h3>
                         <label for="userInput" class="d-flex justify-content-center" id="charCount">Character Count: 250</label>
                         <p><textarea id="userInput" name="userInput" maxlength="250" rows=3 cols=50 style="resize: none;" placeholder="Enter text here..."></textarea></p>
                         <p><button class="d-flex justify-content-center" id="copyInput" onclick="textSave(this.id)">Copy Text!</button></p>
