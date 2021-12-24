@@ -1,4 +1,4 @@
-import * as util from "./utils";
+import * as util from "scripts/utils.js";
 //import fs from 'https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js';
 
 const textArea = document.querySelector("#userInput");
