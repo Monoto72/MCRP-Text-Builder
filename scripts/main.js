@@ -1,6 +1,3 @@
-import * as util from "../scripts/utils";
-//import fs from 'https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js';
-
 const textArea = document.querySelector("#userInput");
 const showcase = document.querySelector("#showcase");
 const colorPicker = document.querySelector("#colorPicker");
@@ -78,6 +75,9 @@ const textSave = async (id) => {
     });
 }
 
+const wait = (ms) => {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 document.getElementById("copyInput").addEventListener("click", textSave);
 document.getElementById("downloadInput").addEventListener("click", textSave);
