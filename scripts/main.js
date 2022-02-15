@@ -33,7 +33,9 @@ const preview = (content) => {
     let count = 0;
 
     while(match=filter.exec(unformattedColors)){
-        if (match[0].slice(1,-1).length == 6) {
+        if (match[0].slice(1,-1).length == 1 && match[0].slice(1,-1).toLowerCase() == "f") {
+            formattedColors.push("#ffffff");
+        } else if (match[0].slice(1,-1).length == 6) {
             formattedColors.push("#" + match[0].slice(1,-1));
         } else {
             formattedColors.push(match[0].slice(1,-1));
